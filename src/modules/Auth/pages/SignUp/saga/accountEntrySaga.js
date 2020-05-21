@@ -2,6 +2,7 @@ import {
   all,
   put,
   takeEvery,
+  takeLatest,
   select,
   delay,
   fork,
@@ -46,6 +47,11 @@ const stopRefreshTokenTask = bgSyncTask => {
   };
 };
 
+function* getUserToken() {
+  const userCredentials = yield select(selectors.getUserCredentialsForSignUp);
+  yield put(signUpActionCreators.signUpRequest(userCredentials));
+}
+
 export default function* watchRequest() {
   yield all([
     takeEvery(
@@ -59,6 +65,7 @@ export default function* watchRequest() {
         tokenActionCreators.refreshTokenSuccess
       ],
       main
-    )
+    ),
+    takeLatest([tokenActionCreators.getClientTokenSuccess], getUserToken)
   ]);
 }

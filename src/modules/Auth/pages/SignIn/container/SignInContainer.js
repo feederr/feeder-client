@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import * as actionCreators from "../actions";
 import Login from "../components/signIn";
-import { bindActionCreators } from "redux";
-import { getErrors } from "../selectors";
-import { validateEmail } from "../../../helpers/validation";
+import {bindActionCreators} from "redux";
+import {getErrors} from "../selectors";
+import {validateEmail} from "../../../helpers/validation";
 
 class SignInContainer extends React.Component {
   state = {
@@ -31,22 +31,22 @@ class SignInContainer extends React.Component {
     e.preventDefault();
 
     const {
-      actions: { signInRequest }
+      actions: {signInRequest}
     } = this.props;
 
     const credentials = this.state.data;
     const validationErrors = validateEmail({}, credentials.email);
-    this.setState({ validationErrors });
+    this.setState({validationErrors});
     if (Object.keys(validationErrors).length === 0) {
       signInRequest(credentials);
-      this.setState({ loading: true });
+      this.setState({loading: true});
     }
   };
 
   render() {
-    const { data } = this.state;
-    const { serverResponseErrors } = this.props;
-    const { validationErrors } = this.state;
+    const {data} = this.state;
+    const {serverResponseErrors} = this.props;
+    const {validationErrors} = this.state;
     const props = {
       onChange: this.onChange,
       onSubmit: this.onSubmit,

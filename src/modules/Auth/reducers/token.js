@@ -1,12 +1,17 @@
-import { handleActions, combineActions } from "redux-actions";
+import {combineActions, handleActions} from "redux-actions";
 import decoder from "jwt-decode";
 
 import * as signUpActionCreators from "../pages/SignUp/actions";
 import * as signInActionCreators from "../pages/SignIn/actions";
 import * as tokenActionCreators from "../actions/tokenActions";
-import { signOut as signOutAction } from "../actions/signOutAction";
+import {signOut as signOutAction} from "../actions/signOutAction";
 
-const defaultState = "";
+const defaultState = {
+  accessToken: "",
+  refreshToken: "",
+  expirationDateTime: "",
+  currentUserCredentials: {}
+};
 
 const tokenReducer = handleActions(
   {
@@ -23,6 +28,12 @@ const tokenReducer = handleActions(
       };
       localStorage.setItem("token", JSON.stringify(token));
       return token;
+    },
+    [tokenActionCreators.getClientTokenRequest](state, action) {
+      return {...state, currentUserCredentials: action.payload.currentUserCredentials}
+    },
+    [tokenActionCreators.getClientTokenSuccess](state, action) {
+      return {...state, accessToken: action.response.data.access_token}
     },
     [signInActionCreators.signInFailed](state, action) {
       return defaultState;

@@ -1,5 +1,5 @@
 let domain = "";
-let localHost = "https://localhost:8080";
+let localHost = "http://localhost:8080";
 
 if (process.env.NODE_ENV === "production") {
     domain = "/";

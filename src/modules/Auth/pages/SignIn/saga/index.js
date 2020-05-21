@@ -3,7 +3,8 @@ import { showNotification } from "../../../../shared/Toaster";
 import * as actionCreators from "../actions";
 
 function* signInFailed(action) {
-  yield showNotification("error", "Smth happen");
+  let message = action.error.message;
+  yield showNotification("error", message);
 }
 
 export default function* signInSaga() {

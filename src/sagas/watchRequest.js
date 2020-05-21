@@ -3,15 +3,21 @@ import _ from "lodash";
 import apiCallsMapping from "../api/apiCallsMapping";
 import {getToken} from "../modules/Auth/selectors";
 import {request} from "../api/requestConfiguration";
+import {tokenForSignUp} from "../modules/Auth/constants/authRouterConstants"
 
 function* callApi(action) {
   const { type, payload } = action;
   const requestData = apiCallsMapping(type)(payload);
 
   if (_.get(requestData, "headers.Authorization", true)) {
-    const token = yield select(getToken);
-
-    _.set(requestData, "headers.Authorization", `Bearer ${token}`);
+    let authValue = _.get(requestData, "headers.Authorization", true);
+    if(authValue === tokenForSignUp) {
+      _.set(requestData, "headers.Authorization", `Basic ${authValue}`);
+    }
+    else {
+      const token = yield select(getToken);
+      _.set(requestData, "headers.Authorization", `Bearer ${token}`);
+    }
   }
 
   try {

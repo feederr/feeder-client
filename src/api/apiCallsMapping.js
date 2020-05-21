@@ -8,6 +8,7 @@ const mapping = {
   [signUpActionCreators.signUpRequest]: authCall.signUpRequest,
   [signInActionCreators.signInRequest]: authCall.signInRequest,
   [tokenActionCreators.refreshTokenRequest]: authCall.refreshTokenRequest,
+  [tokenActionCreators.getClientTokenRequest]: authCall.tokenForClientRequest
 };
 const apiCallsMapping = actionType => {
   if (mapping.hasOwnProperty(actionType)) {

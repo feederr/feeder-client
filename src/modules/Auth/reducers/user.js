@@ -9,8 +9,7 @@ import { loadTokenFromLocalStorage } from "../actions/tokenActions";
 const defaultState = {
   role: "",
   name: "",
-  id: "",
-  avatarPhotoName: ""
+  id: ""
 };
 
 export default handleActions(

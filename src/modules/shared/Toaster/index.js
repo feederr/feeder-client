@@ -9,5 +9,6 @@ const getDefaultOptions = message => {
 };
 
 export const showNotification = (type, message) => {
-  toastr[type]("", getDefaultOptions(message));
+  toastr.light(type, message, {icon: type, status: type})
+  // toastr[type]("", getDefaultOptions(message));
 };

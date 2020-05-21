@@ -24,6 +24,11 @@ const styles = theme => ({
     textAlign: "center",
     marginTop: "1em"
   },
+  errorFromServer: {
+    display: "block",
+    marginBottom: "3em",
+    background: "black"
+  },
   form: {
     display: "flex",
     alignItems: "center",

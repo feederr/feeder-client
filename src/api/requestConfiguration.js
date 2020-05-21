@@ -6,7 +6,7 @@ const getTimezoneOffset = () => {
 };
 
 const config = {
-  baseURL: `${domain}/api`,
+  baseURL: `${domain}/`,
   timeout: 100000,
   headers: {
     "Content-Type": "application/json",

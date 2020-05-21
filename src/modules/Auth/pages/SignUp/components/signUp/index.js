@@ -24,7 +24,6 @@ const Register = ({data, onChange, onSubmit, errors, classes}) => {
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            autoComplete="fname"
                             name="firstName"
                             value={data.firstName || ""}
                             variant="outlined"
@@ -44,7 +43,6 @@ const Register = ({data, onChange, onSubmit, errors, classes}) => {
                             label="Last Name"
                             name="lastName"
                             value={data.lastName || ""}
-                            autoComplete="lname"
                             onChange={onChange}
                         />
                     </Grid>
@@ -57,7 +55,6 @@ const Register = ({data, onChange, onSubmit, errors, classes}) => {
                             label="User Name"
                             name="userName"
                             value={data.userName || ""}
-                            autoComplete="userName"
                             onChange={onChange}
                         />
                         {errors.userName && <InlineError message={errors.userName}/>}
@@ -72,7 +69,6 @@ const Register = ({data, onChange, onSubmit, errors, classes}) => {
                             label="Email Address"
                             name="email"
                             value={data.email || ""}
-                            autoComplete="email"
                             onChange={onChange}
                         />
                         {errors.email && <InlineError message={errors.email}/>}
@@ -88,7 +84,6 @@ const Register = ({data, onChange, onSubmit, errors, classes}) => {
                             label="Password"
                             type="password"
                             id="password"
-                            autoComplete="current-password"
                             onChange={onChange}
                         />
                         {errors.password && <InlineError message={errors.password}/>}

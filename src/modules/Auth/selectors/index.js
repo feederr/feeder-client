@@ -48,3 +48,7 @@ export const getUserName = state => {
 export const getUserPhotoName = state => {
   return state.auth.user.avatarPhotoName;
 };
+
+export const getUserCredentialsForSignUp = state => {
+  return state.auth.token.currentUserCredentials;
+}

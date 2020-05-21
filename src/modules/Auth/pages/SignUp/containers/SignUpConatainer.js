@@ -1,11 +1,10 @@
 import React from "react";
 import {validate} from "../../../helpers/validation";
 import Register from "../components/signUp";
-import {bindActionCreators} from "redux";
-import * as signUpActionCreators from "../actions";
 import {getClientTokenRequest} from "../../../actions/tokenActions"
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {tokenForSignUp} from "../../../constants/authRouterConstants";
 
 class SignUpContainer extends React.Component {
     state = {
@@ -32,18 +31,15 @@ class SignUpContainer extends React.Component {
     };
 
     onSubmit = e => {
-        const {
-            signUpActions: {signUpRequest},
-            tokenActions: {getClientTokenRequest}
-        } = this.props;
-
         e.preventDefault();
         const credentials = this.state.data;
         const errors = validate(credentials);
         this.setState({errors});
         if (Object.keys(errors).length === 0) {
-            getClientTokenRequest();
-            signUpRequest(credentials);
+            this.props.getClientToken({
+                currentUserCredentials: this.state.data,
+                token: tokenForSignUp
+            });
             this.setState({loading: true});
         }
     };
@@ -63,8 +59,7 @@ class SignUpContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signUpActions: bindActionCreators(signUpActionCreators, dispatch),
-        tokenActions: bindActionCreators(getClientTokenRequest, dispatch)
+        getClientToken: payload => dispatch(getClientTokenRequest(payload))
     };
 };
 

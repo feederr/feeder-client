@@ -23,7 +23,11 @@ let validationMap = [
   new PasswordValidation(
     new RegExp("(?=.[!@#$%^&])"),
     `${passMessTemp} special symbols\n`
-  )
+  ),
+    new PasswordValidation(
+        new RegExp("(.{8,})"),
+        `${passMessTemp} at least 8 symbols`
+    )
 ];
 
 export const validateEmail = (errors, email) => {

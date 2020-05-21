@@ -1,8 +1,8 @@
-export const tokenForClientRequest = ({authorizationToken}) => ({
+export const tokenForClientRequest = ({token}) => ({
   url: `/oauth/token?grant_type=client_credentials`,
   method: "post",
   headers: {
-    Authorization: authorizationToken
+    Authorization: token
   }
 });
 
@@ -13,7 +13,7 @@ export const signUpRequest = ({
   email,
   password
 }) => ({
-  url: `/account/register`,
+  url: `/user`,
   method: "post",
   data: {
     firstName,
@@ -23,7 +23,7 @@ export const signUpRequest = ({
     password
   },
   headers: {
-    Authorization: false
+    Authorization: true
   }
 });
 

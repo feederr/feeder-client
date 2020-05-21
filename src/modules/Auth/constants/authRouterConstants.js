@@ -5,3 +5,5 @@ export const Routes = {
   HOMEPAGE: "/home",
   NOTACCESSED: "/denied"
 };
+
+export const tokenForSignUp = "VEVTVF9DTElFTlQ6WWsrYm12anR+VzlOTGREWQ==";

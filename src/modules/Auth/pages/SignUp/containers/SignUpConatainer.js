@@ -14,7 +14,7 @@ class SignUpContainer extends React.Component {
             repeatPassword: "",
             firstName: "",
             lastName: "",
-            userName: ""
+            username: ""
         },
         loading: false,
         errors: {}

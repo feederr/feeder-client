@@ -51,13 +51,13 @@ const Register = ({data, onChange, onSubmit, errors, classes}) => {
                             variant="outlined"
                             required
                             fullWidth
-                            id="userName"
+                            id="username"
                             label="User Name"
-                            name="userName"
-                            value={data.userName || ""}
+                            name="username"
+                            value={data.username || ""}
                             onChange={onChange}
                         />
-                        {errors.userName && <InlineError message={errors.userName}/>}
+                        {errors.username && <InlineError message={errors.username}/>}
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
@@ -133,7 +133,7 @@ Register.propTypes = {
         repeatPassword: PropTypes.string,
         firstName: PropTypes.string,
         lastName: PropTypes.string,
-        userName: PropTypes.string
+        username: PropTypes.string
     })
 };
 

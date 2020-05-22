@@ -15,7 +15,7 @@ const defaultState = {
 export default handleActions(
   {
     [combineActions(signInSuccess, signUpSuccess)](state, action) {
-      return decodeToken(action.response.data.accessToken);
+      return decodeToken(action.response.data.access_token);
     },
     [signOut]() {
       return defaultState;

@@ -7,35 +7,32 @@ export const tokenForClientRequest = ({token}) => ({
 });
 
 export const signUpRequest = ({
-  firstName,
-  lastName,
-  userName,
-  email,
-  password
-}) => ({
+                                firstName,
+                                lastName,
+                                username,
+                                email,
+                                password
+                              }) => ({
   url: `/user`,
   method: "post",
   data: {
     firstName,
     lastName,
-    userName,
+    username,
     email,
-    password
+    password,
+    role: "USER"
   },
   headers: {
     Authorization: true
   }
 });
 
-export const signInRequest = ({ email, password }) => ({
-  url: `/account/signIn`,
+export const signInRequest = ({currentUserCredentials: {email, password}, token}) => ({
+  url: `/oauth/token?grant_type=password&username=${email}&password=${password}`,
   method: "post",
-  data: {
-    email,
-    password
-  },
   headers: {
-    Authorization: false
+    Authorization: token
   }
 });
 
@@ -50,7 +47,7 @@ export const signOutRequest = () => ({
 export const refreshTokenRequest = refreshToken => ({
   url: `/account/refresh`,
   method: "post",
-  data: { refreshToken },
+  data: {refreshToken},
   headers: {
     Authorization: false
   }

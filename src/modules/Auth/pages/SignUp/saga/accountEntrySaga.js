@@ -1,16 +1,7 @@
-import {
-  all,
-  put,
-  takeEvery,
-  takeLatest,
-  select,
-  delay,
-  fork,
-  cancel
-} from "redux-saga/effects";
-import { push } from "connected-react-router";
-import { Routes } from "../../../constants/authRouterConstants";
-import { signOut as signOutAction } from "../../../actions/signOutAction";
+import {all, cancel, delay, fork, put, select, takeEvery, takeLatest} from "redux-saga/effects";
+import {push} from "connected-react-router";
+import {Routes} from "../../../constants/authRouterConstants";
+import {signOut as signOutAction} from "../../../actions/signOutAction";
 import * as tokenActionCreators from "../../../actions/tokenActions";
 import * as signUpActionCreators from "../actions";
 import * as signInActionCreators from "../../SignIn/actions";
@@ -42,7 +33,7 @@ function* main() {
 }
 
 const stopRefreshTokenTask = bgSyncTask => {
-  return function*() {
+  return function* () {
     yield cancel(bgSyncTask);
   };
 };

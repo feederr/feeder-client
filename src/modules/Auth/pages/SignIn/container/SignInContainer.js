@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import * as actionCreators from "../actions";
 import Login from "../components/signIn";
-import {bindActionCreators} from "redux";
 import {getErrors} from "../selectors";
 import {validateEmail} from "../../../helpers/validation";
+import {tokenForSignUp} from "../../../constants/authRouterConstants";
+import {signInRequest} from "../actions";
 
 class SignInContainer extends React.Component {
   state = {
@@ -30,15 +30,15 @@ class SignInContainer extends React.Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const {
-      actions: {signInRequest}
-    } = this.props;
-
     const credentials = this.state.data;
     const validationErrors = validateEmail({}, credentials.email);
     this.setState({validationErrors});
     if (Object.keys(validationErrors).length === 0) {
-      signInRequest(credentials);
+      const payload = {
+        currentUserCredentials: this.state.data,
+        token: tokenForSignUp
+      };
+      this.props.signIn(payload);
       this.setState({loading: true});
     }
   };
@@ -60,7 +60,7 @@ class SignInContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators(actionCreators, dispatch)
+    signIn: payload => dispatch(signInRequest(payload))
   };
 };
 

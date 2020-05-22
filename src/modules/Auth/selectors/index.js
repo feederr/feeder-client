@@ -17,7 +17,8 @@ export const getLoggedIn = state => {
 
   if (_.isObject(currentStore.auth.token)) {
     const tokenExpirationDateTime = getTokenExpirationDateTime(currentStore);
-    return moment().isBefore(tokenExpirationDateTime);
+    const isBefore = moment().isBefore(tokenExpirationDateTime);
+    return isBefore;
   }
 
   return false;

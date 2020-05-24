@@ -10,7 +10,7 @@ import {signInRequest} from "../actions";
 class SignInContainer extends React.Component {
   state = {
     data: {
-      email: "",
+      username: "",
       password: ""
     },
     validationErrors: {}
@@ -30,17 +30,17 @@ class SignInContainer extends React.Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const credentials = this.state.data;
-    const validationErrors = validateEmail({}, credentials.email);
-    this.setState({validationErrors});
-    if (Object.keys(validationErrors).length === 0) {
+    // const credentials = this.state.data;
+    // const validationErrors = validateEmail({}, credentials.username);
+    // this.setState({validationErrors});
+    // if (Object.keys(validationErrors).length === 0) {
       const payload = {
         currentUserCredentials: this.state.data,
         token: tokenForSignUp
       };
       this.props.signIn(payload);
       this.setState({loading: true});
-    }
+    // }
   };
 
   render() {

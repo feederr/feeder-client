@@ -28,8 +28,8 @@ export const signUpRequest = ({
   }
 });
 
-export const signInRequest = ({currentUserCredentials: {email, password}, token}) => ({
-  url: `/oauth/token?grant_type=password&username=${email}&password=${password}`,
+export const signInRequest = ({currentUserCredentials: {username, password}, token}) => ({
+  url: `/oauth/token?grant_type=password&username=${username}&password=${password}`,
   method: "post",
   headers: {
     Authorization: token

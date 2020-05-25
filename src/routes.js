@@ -2,6 +2,7 @@ import React from "react";
 import {Route, Switch} from "react-router";
 import PrivateRoute from "./modules/Auth/services/PrivateRoute/containers/PrivateRouteContainer";
 import Auth from "./modules/Auth/components/Auth";
+import SidebarStripe from "./modules/Layout/pages/Sidebar/component/SidebarStripe";
 
 export default function AppRoutes() {
     return (
@@ -14,6 +15,6 @@ export default function AppRoutes() {
 
 const authorizedRoutes = () => {
     return (
-        <div>Private routes</div>
+      <SidebarStripe />
     );
 };

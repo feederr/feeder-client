@@ -4,7 +4,6 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    margin: "0",
     background: "linear-gradient(0deg, #4e57ce 30%, #bb51c0 95%)"
   },
   mainLayout: {

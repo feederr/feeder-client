@@ -44,11 +44,10 @@ export const signOutRequest = () => ({
   }
 });
 
-export const refreshTokenRequest = refreshToken => ({
-  url: `/account/refresh`,
+export const refreshTokenRequest = ({refreshToken, token}) => ({
+  url: `/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`,
   method: "post",
-  data: {refreshToken},
   headers: {
-    Authorization: false
+    Authorization: token
   }
 });

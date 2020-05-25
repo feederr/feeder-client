@@ -1,62 +1,43 @@
 ﻿const styles = () => ({
-  container: {
-    width: "100wh",
-    height: "100vh",
-    padding: "0"
-  },
-  /* stripe content */
-  stripeContent: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    background: "blue",
-    width: "100%",
-    height: "100%"
-  },
-  homeButton: {
-    width: "1em",
-    height: "1em",
-    alignSelf: "flex-start",
-    background: "yellow"
-  },
-  splitOfButtons: {
-    alignSelf: "flex-center"
-  },
-  subscriptionButton: {
-    background: "yellow"
-  },
-  searchButton: {
-    background: "yellow"
-  },
-  accountLogoButton: {
-    alignSelf: "flex-end",
-    background: "yellow"
-  },
-  /* stripe content */
-  /*-------------------*/
-  /* main content */
-  mainContent: {
-    display: "inline-block",
-    background: "black",
-    width: "100%",
-    height: "100%"
-  },
-  containerFlex: {
+  mainContainer: {
     display: "flex",
     flexDirection: "row",
     width: "100vw",
     height: "100vh"
   },
-  containerSide: {
+  navigationSideBar: {
     display: "flex",
+    width: "3em",
+    justifyContent: "space-between",
     flexDirection: "column",
+    flexShrink: "0",
     height: "100%",
-    flexGrow: "1",
-    background: "blue"
+    flexGrow: "0",
+    background: "#444440"
+  },
+  splitOfButtons: {
+    display: "flex",
+    height: "4em",
+    justifyContent: "space-between",
+    flexDirection: "column"
+  },
+  navButton: {
+    width: "1em",
+    height: "1em",
+    padding: "0",
+    margin: "0",
+    alignSelf: "center",
+    color: "white"
+  },
+  logoButton: {
+    paddingTop: "0.5em"
+  },
+  accountButton: {
+    paddingBottom: "1.5em"
   },
   containerContent: {
-    flexGrow: "30",
-    background: "yellow"
+    flexGrow: "1",
+    background: "#2f2f2a"
   }
 });
 

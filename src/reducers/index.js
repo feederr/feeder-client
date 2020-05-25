@@ -7,5 +7,5 @@ export default history =>
   combineReducers({
     auth,
     toastr: toastrReducer,
-    router: connectRouter(history),
+    router: connectRouter(history)
   });

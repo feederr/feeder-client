@@ -13,7 +13,7 @@
     flexShrink: "0",
     height: "100%",
     flexGrow: "0",
-    background: "#444440"
+    background: "#15234c"
   },
   splitOfButtons: {
     display: "flex",
@@ -27,17 +27,30 @@
     padding: "0",
     margin: "0",
     alignSelf: "center",
-    color: "white"
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#6e6969",
+      opacity: "0.99"
+    }
   },
   logoButton: {
-    paddingTop: "0.5em"
+    alignSelf: "center",
+    paddingTop: "1em"
   },
   accountButton: {
-    paddingBottom: "1.5em"
+    alignSelf: "center",
+    paddingBottom: "1em"
   },
   containerContent: {
     flexGrow: "1",
-    background: "#2f2f2a"
+    background: "#080129",
+    padding: "0.5em"
+  },
+  content: {
+    height: "100%",
+    width: "100%",
+    border: "0.03em solid white",
+    borderRadius: "0.5em"
   }
 });
 

@@ -2,8 +2,9 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import PrivateRoute from "./modules/Auth/services/PrivateRoute/containers/PrivateRouteContainer";
 import Auth from "./modules/Auth/components/Auth";
-// import SidebarStripe from "./modules/Layout/pages/Sidebar/component/SidebarStripe";
 import SideBarContainer from "./modules/Layout/pages/Sidebar/container/SidebarContainer";
+import { FollowMainContainer } from "./modules/Follow/pages/MainLayout/container/FollowMainContainer";
+import { HomeMainContainer } from "./modules/Home/pages/MainLayout/container/HomeMainContainer";
 import SearchContainer from "./modules/Search/container/SearchContainer";
 
 export default function AppRoutes() {
@@ -18,6 +19,8 @@ export default function AppRoutes() {
 const authorizedRoutes = () => {
   return (
     <SideBarContainer>
+      <PrivateRoute path="/home" component={HomeMainContainer} />
+      <PrivateRoute path="/follow" component={FollowMainContainer} />
       <PrivateRoute path="/search" component={SearchContainer} />
     </SideBarContainer>
   );

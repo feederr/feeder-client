@@ -7,8 +7,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import GrainIcon from "@material-ui/icons/Grain";
+import Grid from "@material-ui/core/Grid";
 
-const SidebarStripe = ({ classes, onNavButtonClicked }) => {
+const SidebarStripe = ({ classes, onNavButtonClicked, children }) => {
   return (
     <div className={classes.mainContainer}>
       <div className={classes.navigationSideBar}>
@@ -16,9 +17,8 @@ const SidebarStripe = ({ classes, onNavButtonClicked }) => {
           <Tooltip title="Home">
             <IconButton
               color="default"
-              name="Home"
               className={classes.navButton}
-              onClick={onNavButtonClicked}
+              onClick={() => onNavButtonClicked("Home")}
             >
               <GrainIcon />
             </IconButton>
@@ -29,17 +29,16 @@ const SidebarStripe = ({ classes, onNavButtonClicked }) => {
             <IconButton
               color="primary"
               className={classes.navButton}
-              onClick={onNavButtonClicked}
+              onClick={() => onNavButtonClicked("Follow")}
             >
               <AddIcon />
             </IconButton>
           </Tooltip>
-
           <Tooltip title="Search">
             <IconButton
               color="primary"
               className={classes.navButton}
-              onClick={onNavButtonClicked}
+              onClick={() => onNavButtonClicked("Search")}
             >
               <SearchIcon />
             </IconButton>
@@ -48,9 +47,10 @@ const SidebarStripe = ({ classes, onNavButtonClicked }) => {
         <div className={classes.accountButton}>
           <Tooltip title="Account settings">
             <IconButton
+              name="Profile"
               color="primary"
               className={classes.navButton}
-              onClick={onNavButtonClicked}
+              onClick={() => onNavButtonClicked("Account")}
             >
               <AccountCircleIcon />
             </IconButton>
@@ -58,7 +58,9 @@ const SidebarStripe = ({ classes, onNavButtonClicked }) => {
         </div>
       </div>
       <div className={classes.containerContent}>
-        <div className={classes.content} />
+        <div className={classes.content}>
+          <Grid>{children}</Grid>
+        </div>
       </div>
     </div>
   );
@@ -66,6 +68,7 @@ const SidebarStripe = ({ classes, onNavButtonClicked }) => {
 
 SidebarStripe.propTypes = {
   classes: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired,
   onNavButtonClicked: PropTypes.func
 };
 

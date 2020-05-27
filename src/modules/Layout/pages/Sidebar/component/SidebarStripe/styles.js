@@ -8,12 +8,13 @@
   navigationSideBar: {
     display: "flex",
     width: "3em",
+    zIndex: "2",
     justifyContent: "space-between",
     flexDirection: "column",
     flexShrink: "0",
     height: "100%",
     flexGrow: "0",
-    background: "#15234c"
+    background: "#24242d"
   },
   splitOfButtons: {
     display: "flex",
@@ -35,7 +36,7 @@
   },
   logoButton: {
     alignSelf: "center",
-    paddingTop: "1em"
+    padding: "1em 0 1em 0"
   },
   accountButton: {
     alignSelf: "center",
@@ -43,14 +44,21 @@
   },
   containerContent: {
     flexGrow: "1",
-    background: "#080129",
+    background: "#121212",
     padding: "0.5em"
+  },
+  rollingOutMenu: {
+    width: "15em",
+    zIndex: "1",
+    margin: "0 0 0 -15.5em",
+    transition: "margin 0.3s ease-in-out"
+  },
+  moveMenu: {
+    margin: "0"
   },
   content: {
     height: "100%",
-    width: "100%",
-    border: "0.03em solid white",
-    borderRadius: "0.5em"
+    width: "100%"
   }
 });
 

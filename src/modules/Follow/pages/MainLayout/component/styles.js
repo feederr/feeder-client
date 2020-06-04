@@ -11,7 +11,9 @@ const styles = () => ({
   },
   searchInput: {
     width: "100%",
-    margin: "auto"
+    margin: "auto",
+    color: "white",
+    background: "white"
   }
 });
 

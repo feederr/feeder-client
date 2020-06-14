@@ -22,8 +22,6 @@ jobs:
           npm install
           npm run build
           npm test
-        env:
-          CI: true
 
   docker:
     name: Publish - Docker hub
@@ -33,6 +31,10 @@ jobs:
       REPO: ${{ secrets.DOCKER_REPOSITORY }}
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Node
+          uses: actions/setup-node@v1
+          with:
+            node-version: 12
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image

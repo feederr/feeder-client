@@ -1,0 +1,25 @@
+name: PR to master branch
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Npm install
+        run: npm install
+      - name: Npm build
+        run: npm run build
+      - name: Test
+        run: npm test

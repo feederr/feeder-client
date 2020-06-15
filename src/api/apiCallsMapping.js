@@ -4,13 +4,42 @@ import * as tokenActionCreators from "../modules/Auth/actions/tokenActions";
 import { getChannelsRequest } from "../modules/Search/store/actions";
 import * as authCall from "../modules/Auth/api";
 import { getChannels } from "../modules/Search/api";
+import {
+  followNewSourceRequest,
+  getCategoriesRequest
+} from "../modules/Follow/store/actions";
+import { followNewSource, getAllCategories } from "../modules/Follow/api";
+import {
+  createNewCompilationRequest,
+  deleteCompilationRequest,
+  getChannelsForCompilationRequest,
+  getCompilationsRequest,
+  updateCompilationRequest
+} from "../modules/Layout/store/actions";
+import {
+  createNewCompilation,
+  deleteCompilation,
+  getChannelsForCompilation,
+  getCompilations,
+  updateCompilation
+} from "../modules/Layout/api";
+import { getNewsForChannelsRequest } from "../modules/Channel/store/actions";
+import { getNewsForChannel } from "../modules/Channel/api";
 
 const mapping = {
   [signUpActionCreators.signUpRequest]: authCall.signUpRequest,
   [signInActionCreators.signInRequest]: authCall.signInRequest,
   [tokenActionCreators.refreshTokenRequest]: authCall.refreshTokenRequest,
   [tokenActionCreators.getClientTokenRequest]: authCall.tokenForClientRequest,
-  [getChannelsRequest]: getChannels
+  [getChannelsRequest]: getChannels,
+  [getCategoriesRequest]: getAllCategories,
+  [followNewSourceRequest]: followNewSource,
+  [createNewCompilationRequest]: createNewCompilation,
+  [getCompilationsRequest]: getCompilations,
+  [getChannelsForCompilationRequest]: getChannelsForCompilation,
+  [updateCompilationRequest]: updateCompilation,
+  [deleteCompilationRequest]: deleteCompilation,
+  [getNewsForChannelsRequest]: getNewsForChannel
 };
 const apiCallsMapping = actionType => {
   if (mapping.hasOwnProperty(actionType)) {

@@ -1,5 +1,6 @@
 export const SideBarRoutes = {
   HOME: "/home",
   SEARCH: "/search",
-  FOLLOW: "/follow"
+  FOLLOW: "/follow",
+  CHANNELPAGE: "/channel"
 };

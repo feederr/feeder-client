@@ -7,15 +7,26 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import MenuIcon from "@material-ui/icons/Menu";
-import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 
 const OptionalMenuLayout = ({
   classes,
   currentPathName,
   loadTopicChannels,
   channelsListOpened,
-  redirectToSpecificSection
+  redirectToSpecificSection,
+  isModalOpen,
+  onToggleModal,
+  compilationName,
+  onCompilationNameChanged,
+  saveNewCompilation,
+  allCompilations
 }) => {
   return (
     <div className={classes.mainLayout}>
@@ -66,52 +77,96 @@ const OptionalMenuLayout = ({
         <Typography className={classes.menuItemTitle}>All</Typography>
       </Grid>
       <Grid
+        container
+        direction="column"
         onClick={() => redirectToSpecificSection("Follow")}
         className={`${classes.menuItem}  ${
           currentPathName === "/random" ? classes.menuItemSelected : null
         }`}
       >
-        <div
-          className={`${classes.outlineMenuElement} ${
-            currentPathName === "/random" ? classes.selectOutline : null
-          }`}
-        />
-        <KeyboardArrowRightIcon
-          className={`${classes.arrowIcon} ${
-            channelsListOpened ? classes.moveArrow : null
-          }`}
-          onClick={loadTopicChannels}
-        />
-        <Typography className={classes.menuItemTitle}>Subscription</Typography>
+        <Grid item container direction="row" alignItems="center">
+          <KeyboardArrowRightIcon
+            className={`${classes.arrowIcon} ${
+              channelsListOpened ? classes.moveArrow : null
+            }`}
+            onClick={loadTopicChannels}
+          />
+          <Typography className={classes.menuItemTitle}>
+            Subscription
+          </Typography>
+        </Grid>
+        {allCompilations
+          ? allCompilations.map(compilation => (
+              <Grid key={compilation.id}>
+                <Grid>{compilation.name}</Grid>
+                <Grid>
+                  {compilation.list
+                    ? compilation.list.map((item, itemId) => (
+                        <Grid key={itemId}>sadfasf</Grid>
+                      ))
+                    : null}
+                </Grid>
+              </Grid>
+            ))
+          : null}
+        {/*<Grid*/}
+        {/*  className={`${*/}
+        {/*    channelsListOpened*/}
+        {/*      ? classes.openedSpecificChannels*/}
+        {/*      : classes.closedSpecificChannels*/}
+        {/*  }`}*/}
+        {/*>*/}
+        {/*  <Grid container direction="row" alignItems="center">*/}
+        {/*    <LibraryMusicIcon color="error" />*/}
+        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
+        {/*  </Grid>*/}
+        {/*  <Grid container direction="row" alignItems="center">*/}
+        {/*    <LibraryMusicIcon color="error" />*/}
+        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
+        {/*  </Grid>*/}
+        {/*  <Grid container direction="row" alignItems="center">*/}
+        {/*    <LibraryMusicIcon color="error" />*/}
+        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
+        {/*  </Grid>*/}
+        {/*  <Grid container direction="row" alignItems="center">*/}
+        {/*    <LibraryMusicIcon color="error" />*/}
+        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
+        {/*  </Grid>*/}
+        {/*  <Grid container direction="row" alignItems="center">*/}
+        {/*    <LibraryMusicIcon color="error" />*/}
+        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
+        {/*  </Grid>*/}
+        {/*</Grid>*/}
       </Grid>
-      <div
-        className={`${
-          channelsListOpened
-            ? classes.openedSpecificChannels
-            : classes.closedSpecificChannels
-        }`}
-      >
-        <Grid container direction="row" alignItems="center">
-          <LibraryMusicIcon color="error" />
-          <Typography className={classes.specificChannel}>Item</Typography>
-        </Grid>
-        <Grid container direction="row" alignItems="center">
-          <LibraryMusicIcon color="error" />
-          <Typography className={classes.specificChannel}>Item</Typography>
-        </Grid>
-        <Grid container direction="row" alignItems="center">
-          <LibraryMusicIcon color="error" />
-          <Typography className={classes.specificChannel}>Item</Typography>
-        </Grid>
-        <Grid container direction="row" alignItems="center">
-          <LibraryMusicIcon color="error" />
-          <Typography className={classes.specificChannel}>Item</Typography>
-        </Grid>
-        <Grid container direction="row" alignItems="center">
-          <LibraryMusicIcon color="error" />
-          <Typography className={classes.specificChannel}>Item</Typography>
-        </Grid>
-      </div>
+      <Button style={{ margin: "auto", width: "100%" }} onClick={onToggleModal}>
+        Create New Feed
+      </Button>
+      <Dialog open={isModalOpen} onClose={onToggleModal}>
+        <DialogTitle>Create New Compilation</DialogTitle>
+        <DialogContent className={classes.modalLayout}>
+          <TextField
+            value={compilationName}
+            variant="outlined"
+            required
+            fullWidth
+            label="Name of compilation"
+            onChange={onCompilationNameChanged}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="contained"
+            color="inherit"
+            style={{ background: "green" }}
+            onClick={saveNewCompilation}
+          >
+            Save
+          </Button>
+          <Button variant="outlined" color="secondary" onClick={onToggleModal}>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
@@ -121,7 +176,13 @@ OptionalMenuLayout.propTypes = {
   currentPathName: PropTypes.string.isRequired,
   loadTopicChannels: PropTypes.func,
   channelsListOpened: PropTypes.bool.isRequired,
-  redirectToSpecificSection: PropTypes.func.isRequired
+  redirectToSpecificSection: PropTypes.func.isRequired,
+  isModalOpen: PropTypes.bool,
+  onToggleModal: PropTypes.func,
+  compilationName: PropTypes.string,
+  onCompilationNameChanged: PropTypes.func,
+  saveNewCompilation: PropTypes.func,
+  allCompilations: PropTypes.array
 };
 
 export default withStyles(styles)(OptionalMenuLayout);

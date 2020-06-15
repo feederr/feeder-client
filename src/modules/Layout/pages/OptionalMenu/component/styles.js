@@ -54,7 +54,8 @@ const styles = () => ({
   },
   openedSpecificChannels: {
     display: "block",
-    height: "4em",
+    height: "10em",
+    overflow: "auto",
     width: "100%",
     color: "#898484",
     marginLeft: "3em"
@@ -65,6 +66,10 @@ const styles = () => ({
   specificChannel: {
     font: "0.9em sans-serif",
     paddingLeft: "0.7em"
+  },
+  modalLayout: {
+    width: "30em",
+    height: "6em"
   }
 });
 

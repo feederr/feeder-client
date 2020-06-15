@@ -30,26 +30,10 @@ export const getChannelsByIds = author => ({
   }
 });
 
-export const getChannels = ({ type, value }) => {
-  let url;
-  switch (type) {
-    case "author":
-      url = `/channel?q=author==${value}`;
-      break;
-    case "description":
-      url = `/channel?q=description==${value}`;
-      break;
-    case "title":
-      url = `/channel?q=title==${value}`;
-      break;
-    default:
-      return null;
+export const getChannels = ({ searchValue }) => ({
+  url: `/channel?q=title=='*${searchValue}*'`,
+  method: "get",
+  headers: {
+    Authorization: true
   }
-  return {
-    url,
-    method: "get",
-    headers: {
-      Authorization: true
-    }
-  };
-};
+});

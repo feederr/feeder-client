@@ -8,10 +8,10 @@ import AppRoutes from "./routes";
 export const store = configureStore();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <AppRoutes />
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById("root")
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <AppRoutes />
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById("root")
 );

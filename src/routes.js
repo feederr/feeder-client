@@ -6,6 +6,7 @@ import SideBarContainer from "./modules/Layout/pages/Sidebar/container/SidebarCo
 import { FollowMainContainer } from "./modules/Follow/pages/MainLayout/container/FollowMainContainer";
 import { HomeMainContainer } from "./modules/Home/pages/MainLayout/container/HomeMainContainer";
 import SearchContainer from "./modules/Search/container/SearchContainer";
+import ChannelMainPage from "./modules/Channel/pages/ChannelMainPage/container/ChannelMainPageContainer";
 
 export default function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ const authorizedRoutes = () => {
       <PrivateRoute path="/home" component={HomeMainContainer} />
       <PrivateRoute path="/follow" component={FollowMainContainer} />
       <PrivateRoute path="/search" component={SearchContainer} />
+      <PrivateRoute path="/channel" component={ChannelMainPage} />
     </SideBarContainer>
   );
 };

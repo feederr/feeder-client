@@ -83,7 +83,7 @@ const SidebarStripe = ({
       >
         <OptionalMenuContainer />
       </div>
-      <div className={classes.containerContent} onClick={onMainContentClicked}>
+      <div className={classes.containerContent}>
         <div className={classes.content}>
           <Grid>{children}</Grid>
         </div>

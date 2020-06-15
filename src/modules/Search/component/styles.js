@@ -8,6 +8,16 @@ const styles = () => ({
   },
   inspiration: {
     color: "rgba(201,192,192,0.81)"
+  },
+  searchBar: {
+    width: "50em",
+    margin: "auto"
+  },
+  imageForSearchPreview: {
+    height: "2em",
+    width: "2em",
+    paddingRight: "2em",
+    borderRadius: "0.5em"
   }
 });
 

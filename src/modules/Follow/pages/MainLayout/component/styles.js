@@ -9,11 +9,9 @@ const styles = () => ({
   inspiration: {
     color: "rgba(201,192,192,0.81)"
   },
-  searchInput: {
+  inputField: {
     width: "100%",
-    margin: "auto",
-    color: "white",
-    background: "white"
+    padding: "0"
   }
 });
 

@@ -13,7 +13,9 @@ const FollowLayout = ({
   rssLink,
   onRssLinkChanged,
   followNewSource,
-  onSelectedCategoryChanged
+  onSelectedCategoryChanged,
+  selectCategoryFromImage,
+  someArray
 }) => {
   return (
     <div className={classes.mainLayout}>
@@ -39,17 +41,59 @@ const FollowLayout = ({
           />
         </Grid>
         <Grid item xs={4}>
+          {/*<Autocomplete*/}
+          {/*  id="autocompleteForCategory"*/}
+          {/*  defaultValue={someArray}*/}
+          {/*  multiple*/}
+          {/*  onChange={(e, value) => onSelectedCategoryChanged(e, value)}*/}
+          {/*  options={categoriesList}*/}
+          {/*  getOptionLabel={option => option.name}*/}
+          {/*  renderInput={params => (*/}
+          {/*    <TextField {...params} variant="outlined" label="Category" />*/}
+          {/*  )}*/}
+          {/*  renderOption={option => <Typography>{option.name}</Typography>}*/}
+          {/*/>*/}
           <Autocomplete
             multiple
-            onChange={(e, value) => onSelectedCategoryChanged(e, value)}
+            limitTags={2}
+            id="multiple-limit-tags"
             options={categoriesList}
             getOptionLabel={option => option.name}
+            defaultValue={someArray.map(ar => ar)}
             renderInput={params => (
-              <TextField {...params} variant="outlined" label="Category" />
+              <TextField
+                {...params}
+                variant="outlined"
+                label="limitTags"
+                placeholder="Favorites"
+              />
             )}
-            renderOption={option => <Typography>{option.name}</Typography>}
           />
         </Grid>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        style={{ height: "40em", overflowY: "scroll" }}
+      >
+        {categoriesList
+          ? categoriesList.map(category => (
+              <Grid
+                key={category.id}
+                style={{ marginTop: "3em" }}
+                onClick={() => selectCategoryFromImage(category)}
+              >
+                <img
+                  src={category.imageUrl}
+                  className={classes.categoryImage}
+                />
+                <Typography className={classes.nameOfCategoryForImage}>
+                  {category.name}
+                </Typography>
+              </Grid>
+            ))
+          : null}
       </Grid>
     </div>
   );
@@ -61,7 +105,8 @@ FollowLayout.propTypes = {
   followNewSource: PropTypes.func,
   onSelectedCategoryChanged: PropTypes.func,
   onRssLinkChanged: PropTypes.func,
-  rssLink: PropTypes.string
+  rssLink: PropTypes.string,
+  selectCategoryFromImage: PropTypes.func
 };
 
 export default withStyles(styles)(FollowLayout);

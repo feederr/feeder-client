@@ -1,8 +1,8 @@
 const styles = () => ({
   mainLayout: {
-    width: "100%",
+    width: "12em",
     height: "100%",
-    background: "#24242d",
+    background: "#151519",
     border: "1px #494444 solid",
     borderStyle: "hidden solid"
   },

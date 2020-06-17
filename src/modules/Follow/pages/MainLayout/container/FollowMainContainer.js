@@ -12,12 +12,19 @@ export const FollowMainContainer = props => {
   const [rssLink, setRssLink] = useState("");
   const dispatch = useDispatch();
   const categoriesList = useSelector(state => state.follow.categories);
+  let someArray = [];
+  if (categoriesList.length > 1) {
+    someArray.push(categoriesList[0]);
+    someArray.push(categoriesList[1]);
+    console.log(someArray);
+  }
 
   function toggleModal() {
     setIsModalOpen(!isModalOpen);
   }
 
-  function onSelectedCategoryChanged(option, selectedValues) {
+  function onSelectedCategoryChanged(event, selectedValues) {
+    console.log(selectedValues);
     const idsOfSelectedValues = selectedValues.map(value => value.id);
     setSelectedCategories(idsOfSelectedValues);
   }
@@ -44,12 +51,22 @@ export const FollowMainContainer = props => {
     }
   }
 
+  function selectCategoryFromImage(category) {
+    const autoComplete = document.getElementById("autocompleteForCategory");
+    // autoComplete.defaultValue.push(category.name);
+    console.log(autoComplete.options);
+    selectedCategories.push(category.id);
+    setSelectedCategories(selectedCategories);
+  }
+
   useEffect(() => {
     dispatch(getCategoriesRequest());
   }, [dispatch]);
 
   return (
     <FollowLayout
+      someArray={someArray}
+      selectCategoryFromImage={selectCategoryFromImage}
       onSelectedCategoryChanged={onSelectedCategoryChanged}
       isModalOpen={isModalOpen}
       toggleModal={toggleModal}

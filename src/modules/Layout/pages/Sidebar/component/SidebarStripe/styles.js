@@ -14,7 +14,7 @@
     flexShrink: "0",
     height: "100%",
     flexGrow: "0",
-    background: "#24242d"
+    background: "#000000"
   },
   splitOfButtons: {
     display: "flex",
@@ -50,7 +50,7 @@
   rollingOutMenu: {
     width: "15em",
     zIndex: "1",
-    margin: "0 0 0 -15.5em",
+    margin: "0 0 0 -12em",
     transition: "margin 0.3s ease-in-out"
   },
   moveMenu: {

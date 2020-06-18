@@ -49,7 +49,7 @@ const ChannelPreviewContainer = ({ history, channelInfo }) => {
       onClosePopup={onClosePopup}
       followUpChannel={followUpChannel}
       isFollowed={isFollowed}
-      channelImageUrl={channelInfo.image.url}
+      channelImageUrl={channelInfo.image ? channelInfo.image.url : null}
       nameOfChannel={channelInfo.title}
       descriptionForChannel={channelInfo.description}
     />

@@ -46,7 +46,7 @@ const styles = () => ({
   },
   arrowIcon: {
     width: "0.75em",
-    margin: "0 0.5em 0 -0.1em",
+    margin: "0 0.5em 0 0",
     transition: "transform 0.3s ease"
   },
   moveArrow: {
@@ -54,11 +54,10 @@ const styles = () => ({
   },
   openedSpecificChannels: {
     display: "block",
-    height: "10em",
     overflow: "auto",
     width: "100%",
     color: "#898484",
-    marginLeft: "3em"
+    marginLeft: "1em"
   },
   closedSpecificChannels: {
     display: "none"
@@ -66,6 +65,10 @@ const styles = () => ({
   specificChannel: {
     font: "0.9em sans-serif",
     paddingLeft: "0.7em"
+  },
+  compilationItem: {
+    padding: "0.5em 0 1em 0",
+    width: "100%"
   },
   modalLayout: {
     width: "30em",

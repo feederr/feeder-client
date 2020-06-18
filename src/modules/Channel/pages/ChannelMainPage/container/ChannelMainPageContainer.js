@@ -8,10 +8,17 @@ const ChannelMainPage = ({ history }) => {
   const channelInfo = useSelector(state => state.channel.currentChannel);
   const channelNews = useSelector(state => state.channel.currentChannelNews);
   const dispatch = useDispatch();
-  let el = document.getElementById("randomtron");
-  if (el) {
-    el.innerHTML = channelNews[1].description;
-  }
+
+  useEffect(() => {
+    if (channelNews) {
+      channelNews.forEach(news => {
+        let element = document.getElementById(news.id);
+        if (element) {
+          element.innerHTML = news.description;
+        }
+      });
+    }
+  });
 
   useEffect(() => {
     dispatch(getNewsForChannelsRequest({ channelId: channelInfo.id }));

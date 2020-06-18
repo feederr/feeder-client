@@ -83,6 +83,7 @@ const OptionalMenuLayout = ({
         className={`${classes.menuItem}  ${
           currentPathName === "/random" ? classes.menuItemSelected : null
         }`}
+        style={{ paddingLeft: "1em" }}
       >
         <Grid item container direction="row" alignItems="center">
           <KeyboardArrowRightIcon
@@ -95,48 +96,28 @@ const OptionalMenuLayout = ({
             Subscription
           </Typography>
         </Grid>
-        {allCompilations
-          ? allCompilations.map(compilation => (
-              <Grid key={compilation.id}>
-                <Grid>{compilation.name}</Grid>
-                <Grid>
-                  {compilation.list
-                    ? compilation.list.map((item, itemId) => (
-                        <Grid key={itemId}>sadfasf</Grid>
-                      ))
-                    : null}
+        <Grid
+          className={`${
+            channelsListOpened
+              ? classes.openedSpecificChannels
+              : classes.closedSpecificChannels
+          }`}
+        >
+          {allCompilations
+            ? allCompilations.map(compilation => (
+                <Grid key={compilation.id} className={classes.compilationItem}>
+                  <Grid>{compilation.name}</Grid>
+                  <Grid>
+                    {compilation.list
+                      ? compilation.list.map((item, itemId) => (
+                          <Grid key={itemId}>sadfasf</Grid>
+                        ))
+                      : null}
+                  </Grid>
                 </Grid>
-              </Grid>
-            ))
-          : null}
-        {/*<Grid*/}
-        {/*  className={`${*/}
-        {/*    channelsListOpened*/}
-        {/*      ? classes.openedSpecificChannels*/}
-        {/*      : classes.closedSpecificChannels*/}
-        {/*  }`}*/}
-        {/*>*/}
-        {/*  <Grid container direction="row" alignItems="center">*/}
-        {/*    <LibraryMusicIcon color="error" />*/}
-        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid container direction="row" alignItems="center">*/}
-        {/*    <LibraryMusicIcon color="error" />*/}
-        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid container direction="row" alignItems="center">*/}
-        {/*    <LibraryMusicIcon color="error" />*/}
-        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid container direction="row" alignItems="center">*/}
-        {/*    <LibraryMusicIcon color="error" />*/}
-        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid container direction="row" alignItems="center">*/}
-        {/*    <LibraryMusicIcon color="error" />*/}
-        {/*    <Typography className={classes.specificChannel}>Item</Typography>*/}
-        {/*  </Grid>*/}
-        {/*</Grid>*/}
+              ))
+            : null}
+        </Grid>
       </Grid>
       <Button style={{ margin: "auto", width: "100%" }} onClick={onToggleModal}>
         Create New Feed

@@ -1,0 +1,14 @@
+POST http://localhost:8080/oauth/token?grant_type=password&username=sryv&password=Qwerty123@
+Content-Type: application/json
+Authorization: Basic VEVTVF9DTElFTlQ6WWsrYm12anR+VzlOTGREWQ==
+
+{
+  "access_token": "access_token"
+}
+
+> {%
+client.log(response.body.access_token);
+client.global.set("token", response.body.access_token);
+%}
+
+###

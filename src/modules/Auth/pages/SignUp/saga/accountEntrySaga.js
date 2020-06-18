@@ -1,6 +1,6 @@
 import {all, cancel, delay, fork, put, select, takeEvery, takeLatest} from "redux-saga/effects";
 import {push} from "connected-react-router";
-import {Routes} from "../../../constants/authRouterConstants";
+import {Routes, tokenForSignUp} from "../../../constants/authRouterConstants";
 import {signOut as signOutAction} from "../../../actions/signOutAction";
 import * as tokenActionCreators from "../../../actions/tokenActions";
 import * as signUpActionCreators from "../actions";
@@ -16,6 +16,7 @@ function* refreshToken() {
   const isLoggedIn = yield select(selectors.getLoggedIn);
   if (!isLoggedIn) return;
   const refreshToken = yield select(selectors.getRefreshToken);
+  const basicToken = tokenForSignUp;
   const tokenExpirationDateTime = yield select(
     selectors.getTokenExpirationDateTime
   );
@@ -24,7 +25,7 @@ function* refreshToken() {
 
   yield delay(refreshTokenDelay);
 
-  yield put(tokenActionCreators.refreshTokenRequest(refreshToken));
+  yield put(tokenActionCreators.refreshTokenRequest({refreshToken, token: basicToken}));
 }
 
 function* main() {

@@ -3,7 +3,7 @@ const styles = () => ({
     padding: "2em"
   },
   mainTitle: {
-    color: "white",
+    color: "#a3a09c",
     font: "3em solid sans-serif"
   },
   inspiration: {

@@ -8,7 +8,7 @@ const HomeLayout = ({ classes }) => {
   return (
     <div className={classes.mainLayout}>
       <Typography className={classes.mainTitle}>Today</Typography>
-      <hr style={{ color: "white" }} />
+      <hr style={{ color: "#a3a09c" }} />
       <Typography className={classes.inspiration}>
         The insights you need to keep ahead
       </Typography>

@@ -12,7 +12,7 @@ const styles = () => ({
     font: "1.5em bold"
   },
   descriptionForNews: {
-    border: "0.1em solid white",
+    border: "0.1em solid #a3a09c",
     borderRadius: "0.5em",
     padding: "2em"
   }

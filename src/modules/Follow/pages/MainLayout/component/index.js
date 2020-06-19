@@ -20,7 +20,7 @@ const FollowLayout = ({
   return (
     <div className={classes.mainLayout}>
       <Typography className={classes.mainTitle}>Follow New Sources</Typography>
-      <hr style={{ color: "white" }} />
+      <hr style={{ color: "#a3a09c" }} />
       <Typography className={classes.inspiration}>
         Discover the best sources for any topic
       </Typography>

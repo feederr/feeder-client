@@ -21,7 +21,7 @@ const styles = () => ({
     color: "#898484",
     "&:hover": {
       background: "#211d1d",
-      color: "white"
+      color: "#a3a09c"
     }
   },
   menuItemSelected: {

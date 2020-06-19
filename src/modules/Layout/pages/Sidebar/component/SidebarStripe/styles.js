@@ -28,7 +28,7 @@
     padding: "0",
     margin: "0",
     alignSelf: "center",
-    color: "white",
+    color: "#a3a09c",
     "&:hover": {
       backgroundColor: "#6e6969",
       opacity: "0.99"

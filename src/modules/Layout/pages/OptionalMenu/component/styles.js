@@ -1,10 +1,11 @@
 const styles = () => ({
   mainLayout: {
-    width: "12em",
+    width: "15em",
     height: "100%",
     background: "#151519",
     border: "1px #494444 solid",
-    borderStyle: "hidden solid"
+    borderStyle: "hidden solid",
+    margin: "0"
   },
   navButton: {
     margin: "0 0.5em 0 0",

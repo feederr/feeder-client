@@ -1,6 +1,6 @@
 const styles = () => ({
   mainLayout: {
-    padding: "2em"
+    padding: "2em",
   },
   mainTitle: {
     color: "#a3a09c",

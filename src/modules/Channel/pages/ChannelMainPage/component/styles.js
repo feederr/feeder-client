@@ -2,7 +2,7 @@ const styles = () => ({
   mainLayout: {
     padding: "2em",
     height: "50em",
-    overflowY: "scroll"
+    overflowY: "auto"
   },
   channelTitle: {
     font: "4em bold"

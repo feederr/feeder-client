@@ -3,14 +3,12 @@ import {
   getChannelsForCompilationRequest,
   getCompilationsSuccess
 } from "./actions";
-import { showNotification } from "../../shared/Toaster";
-import { put } from "@redux-saga/core/effects";
+import { put } from "redux-saga/effects";
 
 function* loadAdditionalInfoForCompilations(action) {
   const count = action.response.data.content.length;
   const data = action.response.data.content;
   for (let i = 0; i < count; i++) {
-    console.log(data[i].id);
     yield put(getChannelsForCompilationRequest({ compilationId: data[i].id }));
   }
 }

@@ -10,14 +10,10 @@ export const FollowMainContainer = props => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [rssLink, setRssLink] = useState("");
+  const [valuesForCategory, setValuesForCategory] = useState([]);
   const dispatch = useDispatch();
   const categoriesList = useSelector(state => state.follow.categories);
   let someArray = [];
-  if (categoriesList.length > 1) {
-    someArray.push(categoriesList[0]);
-    someArray.push(categoriesList[1]);
-    console.log(someArray);
-  }
 
   function toggleModal() {
     setIsModalOpen(!isModalOpen);
@@ -63,9 +59,18 @@ export const FollowMainContainer = props => {
     dispatch(getCategoriesRequest());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (categoriesList.length > 1 && valuesForCategory.length < 1) {
+      valuesForCategory.push(categoriesList[0]);
+      valuesForCategory.push(categoriesList[1]);
+      setValuesForCategory(valuesForCategory);
+      console.log(valuesForCategory);
+    }
+  }, [categoriesList, valuesForCategory]);
+
   return (
     <FollowLayout
-      someArray={someArray}
+      someArray={valuesForCategory}
       selectCategoryFromImage={selectCategoryFromImage}
       onSelectedCategoryChanged={onSelectedCategoryChanged}
       isModalOpen={isModalOpen}

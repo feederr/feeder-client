@@ -50,7 +50,7 @@
   rollingOutMenu: {
     width: "15em",
     zIndex: "1",
-    margin: "0 0 0 -12em",
+    margin: "0 0 0 -15em",
     transition: "margin 0.3s ease-in-out"
   },
   moveMenu: {

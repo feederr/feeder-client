@@ -41,21 +41,9 @@ const FollowLayout = ({
           />
         </Grid>
         <Grid item xs={4}>
-          {/*<Autocomplete*/}
-          {/*  id="autocompleteForCategory"*/}
-          {/*  defaultValue={someArray}*/}
-          {/*  multiple*/}
-          {/*  onChange={(e, value) => onSelectedCategoryChanged(e, value)}*/}
-          {/*  options={categoriesList}*/}
-          {/*  getOptionLabel={option => option.name}*/}
-          {/*  renderInput={params => (*/}
-          {/*    <TextField {...params} variant="outlined" label="Category" />*/}
-          {/*  )}*/}
-          {/*  renderOption={option => <Typography>{option.name}</Typography>}*/}
-          {/*/>*/}
           <Autocomplete
             multiple
-            limitTags={2}
+            limitTags={3}
             id="multiple-limit-tags"
             options={categoriesList}
             getOptionLabel={option => option.name}
@@ -64,8 +52,8 @@ const FollowLayout = ({
               <TextField
                 {...params}
                 variant="outlined"
-                label="limitTags"
-                placeholder="Favorites"
+                label="Category"
+                placeholder="Category"
               />
             )}
           />
@@ -75,7 +63,7 @@ const FollowLayout = ({
         container
         direction="row"
         justify="center"
-        style={{ height: "40em", overflowY: "scroll" }}
+        style={{ height: "40em", overflowY: "auto" }}
       >
         {categoriesList
           ? categoriesList.map(category => (

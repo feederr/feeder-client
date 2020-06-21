@@ -5,6 +5,7 @@ import {
   getStatisticsForItemSuccess,
   redirectToNewsForChannel
 } from "./actions";
+import { parseImage } from "../../../helper/imageParser";
 
 const defaultState = {
   allChannels: [{}],
@@ -31,21 +32,28 @@ const channelPageReducer = handleActions(
       };
     },
     [getNewsForChannelsSuccess](state, action) {
-      console.log(action.response.data.content);
+      const news = action.response.data.content;
+      news.forEach(item => {
+        try {
+          let parsedData = parseImage(item.description);
+          item.description = parsedData.restOfDescription;
+          item.image = parsedData.urlToImage;
+        } catch (e) {
+          console.log(e);
+        }
+      });
       return {
         ...state,
-        currentChannelNews: action.response.data.content
+        currentChannelNews: news
       };
     },
     [getStatisticsForChannelSuccess](state, action) {
-      console.log(action.response.data);
       return {
         ...state,
         currentChannelStatistics: action.response.data.content
       };
     },
     [getStatisticsForItemSuccess](state, action) {
-      console.log(action.response.data);
       const currentNewsStatistics = state.newsStatistics;
       currentNewsStatistics.push(action.response.data.content);
       return {

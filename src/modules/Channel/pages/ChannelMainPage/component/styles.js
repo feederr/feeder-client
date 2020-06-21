@@ -12,12 +12,9 @@ const styles = () => ({
     font: "1.5em bold"
   },
   imageOfNews: {
-    // border: "0.1em solid #a3a09c",
-    // borderRadius: "0.5em",
     padding: "2em",
-    width: "2em",
-    height: "2em",
-    // background: "yellow"
+    width: "4em",
+    height: "2em"
   }
 });
 

@@ -3,35 +3,69 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import styles from "./styles";
-import { withStyles } from "@material-ui/core";
-import parse from "html-react-parser";
+import { Modal, withStyles } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const ChannelMainPage = ({ classes, channelInfo, news }) => {
+const ChannelMainPage = ({
+  classes,
+  channelInfo,
+  news,
+  openDescriptionModal,
+  isModalOpened,
+  viewableItem
+}) => {
   return (
     <Grid className={classes.mainLayout}>
       <Typography className={classes.channelTitle}>
         {channelInfo.title}
       </Typography>
       <hr style={{ color: "#a3a09c" }} />
-      <Typography>{channelInfo.description}</Typography>
-      <Grid>
+      <Typography style={{ paddingBottom: "3em" }}>
+        {channelInfo.description}
+      </Typography>
+      <Grid container justify="center">
         {news
           ? news.map(item => {
-              console.log(item.image);
               return (
-                <Grid key={item.id} container direction="row">
+                <Grid
+                  item
+                  key={item.id}
+                  container
+                  direction="row"
+                  style={{
+                    padding: "2em",
+                    width: "100%"
+                  }}
+                  onClick={() => openDescriptionModal(item)}
+                >
                   <img
                     src={item.image}
-                    style={{ width: "5em", height: "5em" }}
+                    style={{
+                      width: "12em",
+                      height: "8em",
+                      paddingRight: "2em"
+                    }}
                   />
-                  <Typography className={classes.mainTitle}>
-                    {item.title}
-                  </Typography>
+                  <Grid>
+                    <Typography>{item.title}</Typography>
+                  </Grid>
                 </Grid>
               );
             })
           : null}
       </Grid>
+      <Modal open={isModalOpened}>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          style={{ height: "60vh", width: "40wh", background: "black" }}
+        >
+          <img src={viewableItem.image} />
+          <Typography>{viewableItem.title}</Typography>
+          <Typography>{viewableItem.description}</Typography>
+        </Grid>
+      </Modal>
     </Grid>
   );
 };
@@ -39,7 +73,10 @@ const ChannelMainPage = ({ classes, channelInfo, news }) => {
 ChannelMainPage.propTypes = {
   channelInfo: PropTypes.object,
   classes: PropTypes.object,
-  news: PropTypes.arrayOf(PropTypes.object)
+  news: PropTypes.arrayOf(PropTypes.object),
+  openDescriptionModal: PropTypes.func,
+  isModalOpened: PropTypes.bool,
+  viewableItem: PropTypes.object
 };
 
 export default withStyles(styles)(ChannelMainPage);

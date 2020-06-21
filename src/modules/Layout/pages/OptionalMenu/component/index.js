@@ -131,6 +131,7 @@ const OptionalMenuLayout = ({
       <Dialog
         open={isModalOpen && !isCompilationCreated}
         onClose={onToggleModal}
+
       >
         <DialogTitle>Create New Compilation</DialogTitle>
         <DialogContent className={classes.modalLayout}>

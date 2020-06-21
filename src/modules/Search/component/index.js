@@ -25,7 +25,7 @@ const SearchPage = ({
   return (
     <div className={classes.mainLayout}>
       <Typography className={classes.mainTitle}>Search</Typography>
-      <hr style={{ color: "white" }} />
+      <hr style={{ color: "#a3a09c" }} />
       <Typography className={classes.inspiration}>
         Search in your Feeder
       </Typography>

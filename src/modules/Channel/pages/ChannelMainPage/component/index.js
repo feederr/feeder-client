@@ -9,7 +9,7 @@ const ChannelMainPage = ({ classes, channelInfo, news }) => {
   return (
     <Grid className={classes.mainLayout}>
       <Typography className={classes.channelTitle}>{channelInfo.title}</Typography>
-      <hr style={{ color: "white" }} />
+      <hr style={{ color: "#a3a09c" }} />
       <Typography>{channelInfo.description}</Typography>
       {/*// statistics info should be here*/}
       <Grid>

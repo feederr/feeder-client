@@ -28,7 +28,7 @@
     padding: "0",
     margin: "0",
     alignSelf: "center",
-    color: "white",
+    color: "#a3a09c",
     "&:hover": {
       backgroundColor: "#6e6969",
       opacity: "0.99"
@@ -50,7 +50,7 @@
   rollingOutMenu: {
     width: "15em",
     zIndex: "1",
-    margin: "0 0 0 -12em",
+    margin: "0 0 0 -15em",
     transition: "margin 0.3s ease-in-out"
   },
   moveMenu: {

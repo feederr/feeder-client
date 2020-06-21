@@ -14,6 +14,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { Modal } from "@material-ui/core";
 
 const OptionalMenuLayout = ({
   classes,
@@ -26,7 +28,9 @@ const OptionalMenuLayout = ({
   compilationName,
   onCompilationNameChanged,
   saveNewCompilation,
-  allCompilations
+  allCompilations,
+  isCompilationCreating,
+  isCompilationCreated
 }) => {
   return (
     <div className={classes.mainLayout}>
@@ -57,7 +61,9 @@ const OptionalMenuLayout = ({
           }`}
         />
         <BookmarkBorderIcon className={`${classes.bookmarkIcon} `} />
-        <Typography className={classes.menuItemTitle}>Read Later</Typography>
+        <Typography className={classes.menuItemTitle}>
+          Follow new sources
+        </Typography>
       </Grid>
       <div style={{ height: "1.5em" }} />
       <Typography className={classes.feedsTitle}>FEEDS</Typography>
@@ -122,7 +128,10 @@ const OptionalMenuLayout = ({
       <Button style={{ margin: "auto", width: "100%" }} onClick={onToggleModal}>
         Create New Feed
       </Button>
-      <Dialog open={isModalOpen} onClose={onToggleModal}>
+      <Dialog
+        open={isModalOpen && !isCompilationCreated}
+        onClose={onToggleModal}
+      >
         <DialogTitle>Create New Compilation</DialogTitle>
         <DialogContent className={classes.modalLayout}>
           <TextField
@@ -148,6 +157,16 @@ const OptionalMenuLayout = ({
           </Button>
         </DialogActions>
       </Dialog>
+      <Modal open={isCompilationCreating}>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          style={{ height: "100%" }}
+        >
+          <CircularProgress />
+        </Grid>
+      </Modal>
     </div>
   );
 };
@@ -163,7 +182,9 @@ OptionalMenuLayout.propTypes = {
   compilationName: PropTypes.string,
   onCompilationNameChanged: PropTypes.func,
   saveNewCompilation: PropTypes.func,
-  allCompilations: PropTypes.array
+  allCompilations: PropTypes.array,
+  isCompilationCreating: PropTypes.bool,
+  isCompilationCreated: PropTypes.bool
 };
 
 export default withStyles(styles)(OptionalMenuLayout);

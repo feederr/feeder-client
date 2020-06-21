@@ -11,10 +11,13 @@ const styles = () => ({
     padding: "2em 0 0.5em 0.8em",
     font: "1.5em bold"
   },
-  descriptionForNews: {
-    border: "0.1em solid #a3a09c",
-    borderRadius: "0.5em",
-    padding: "2em"
+  imageOfNews: {
+    // border: "0.1em solid #a3a09c",
+    // borderRadius: "0.5em",
+    padding: "2em",
+    width: "2em",
+    height: "2em",
+    // background: "yellow"
   }
 });
 

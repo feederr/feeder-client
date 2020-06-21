@@ -4,28 +4,32 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core";
+import parse from "html-react-parser";
 
 const ChannelMainPage = ({ classes, channelInfo, news }) => {
   return (
     <Grid className={classes.mainLayout}>
-      <Typography className={classes.channelTitle}>{channelInfo.title}</Typography>
+      <Typography className={classes.channelTitle}>
+        {channelInfo.title}
+      </Typography>
       <hr style={{ color: "#a3a09c" }} />
       <Typography>{channelInfo.description}</Typography>
-      {/*// statistics info should be here*/}
       <Grid>
         {news
-          ? news.map(item => (
-              <Grid key={item.id}>
-                <Typography className={classes.mainTitle}>
-                  {item.title}
-                </Typography>
-                <Typography
-                  id={item.id}
-                  className={classes.descriptionForNews}
-                />
-                <Typography>{item.pubDate}</Typography>
-              </Grid>
-            ))
+          ? news.map(item => {
+              console.log(item.image);
+              return (
+                <Grid key={item.id} container direction="row">
+                  <img
+                    src={item.image}
+                    style={{ width: "5em", height: "5em" }}
+                  />
+                  <Typography className={classes.mainTitle}>
+                    {item.title}
+                  </Typography>
+                </Grid>
+              );
+            })
           : null}
       </Grid>
     </Grid>

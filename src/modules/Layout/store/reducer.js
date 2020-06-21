@@ -8,7 +8,8 @@ import {
 
 const defaultState = {
   compilationsList: [],
-  isCompilationCreating: false
+  isCompilationCreating: false,
+  isCompilationCreated: false
 };
 
 const layoutReducer = handleActions(
@@ -16,16 +17,18 @@ const layoutReducer = handleActions(
     [createNewCompilationRequest](state) {
       return {
         ...state,
-        isCompilationCreating: true
+        isCompilationCreating: true,
+        isCompilationCreated: false
       };
     },
     [createNewCompilationSuccess](state, action) {
       const currentList = state.compilationsList;
-      currentList.push(action.response.content);
+      currentList.push(action.response.data);
       return {
         ...state,
         compilationsList: currentList,
-        isCompilationCreating: false
+        isCompilationCreating: false,
+        isCompilationCreated: true
       };
     },
     [getCompilationsSuccess](state, action) {

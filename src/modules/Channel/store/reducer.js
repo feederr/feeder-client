@@ -1,8 +1,15 @@
 import { handleActions } from "redux-actions";
-import { getNewsForChannelsSuccess, redirectToNewsForChannel } from "./actions";
+import {
+  getNewsForChannelsSuccess,
+  getStatisticsForChannelSuccess,
+  getStatisticsForItemSuccess,
+  redirectToNewsForChannel
+} from "./actions";
 
 const defaultState = {
+  allChannels: [{}],
   currentChannel: {},
+  currentChannelStatistics: {},
   currentChannelNews: [
     {
       title: "",
@@ -11,7 +18,8 @@ const defaultState = {
       pubDate: "",
       id: ""
     }
-  ]
+  ],
+  newsStatistics: [{}]
 };
 
 const channelPageReducer = handleActions(
@@ -27,6 +35,22 @@ const channelPageReducer = handleActions(
       return {
         ...state,
         currentChannelNews: action.response.data.content
+      };
+    },
+    [getStatisticsForChannelSuccess](state, action) {
+      console.log(action.response.data);
+      return {
+        ...state,
+        currentChannelStatistics: action.response.data.content
+      };
+    },
+    [getStatisticsForItemSuccess](state, action) {
+      console.log(action.response.data);
+      const currentNewsStatistics = state.newsStatistics;
+      currentNewsStatistics.push(action.response.data.content);
+      return {
+        ...state,
+        newsStatistics: currentNewsStatistics
       };
     }
   },

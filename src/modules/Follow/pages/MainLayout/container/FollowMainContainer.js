@@ -48,9 +48,6 @@ export const FollowMainContainer = props => {
   }
 
   function selectCategoryFromImage(category) {
-    const autoComplete = document.getElementById("autocompleteForCategory");
-    // autoComplete.defaultValue.push(category.name);
-    console.log(autoComplete.options);
     selectedCategories.push(category.id);
     setSelectedCategories(selectedCategories);
   }

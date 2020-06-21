@@ -17,6 +17,7 @@
     "filepond-plugin-file-validate-type": "^1.2.4",
     "filepond-plugin-image-preview": "^4.5.0",
     "history": "^4.9.0",
+    "html-react-parser": "^0.13.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.14",
     "material-table": "^1.54.2",

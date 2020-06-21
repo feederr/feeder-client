@@ -49,12 +49,7 @@ const FollowLayout = ({
             getOptionLabel={option => option.name}
             defaultValue={someArray.map(ar => ar)}
             renderInput={params => (
-              <TextField
-                {...params}
-                variant="outlined"
-                label="Category"
-                placeholder="Category"
-              />
+              <TextField {...params} variant="outlined" label="Category" />
             )}
           />
         </Grid>

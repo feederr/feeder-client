@@ -23,8 +23,16 @@ import {
   getCompilations,
   updateCompilation
 } from "../modules/Layout/api";
-import { getNewsForChannelsRequest } from "../modules/Channel/store/actions";
-import { getNewsForChannel } from "../modules/Channel/api";
+import {
+  getNewsForChannelsRequest,
+  getStatisticsForChannelRequest,
+  getStatisticsForItemRequest
+} from "../modules/Channel/store/actions";
+import {
+  getNewsForChannel,
+  getStatisticsForChannel,
+  getStatisticsForItem
+} from "../modules/Channel/api";
 
 const mapping = {
   [signUpActionCreators.signUpRequest]: authCall.signUpRequest,
@@ -39,7 +47,9 @@ const mapping = {
   [getChannelsForCompilationRequest]: getChannelsForCompilation,
   [updateCompilationRequest]: updateCompilation,
   [deleteCompilationRequest]: deleteCompilation,
-  [getNewsForChannelsRequest]: getNewsForChannel
+  [getNewsForChannelsRequest]: getNewsForChannel,
+  [getStatisticsForChannelRequest]: getStatisticsForChannel,
+  [getStatisticsForItemRequest]: getStatisticsForItem
 };
 const apiCallsMapping = actionType => {
   if (mapping.hasOwnProperty(actionType)) {

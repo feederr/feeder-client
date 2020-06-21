@@ -16,6 +16,13 @@ const OptionalMenuContainer = props => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const allCompilations = useSelector(state => state.layout.compilationsList);
+  const isCompilationCreating = useSelector(
+    state => state.layout.isCompilationCreating
+  );
+  const isCompilationCreated = useSelector(
+    state => state.layout.isCompilationCreated
+  );
+  console.log(allCompilations);
 
   function loadTopicChannels() {
     setChannelsListOpened(!channelsListOpened);
@@ -35,7 +42,7 @@ const OptionalMenuContainer = props => {
 
   function saveNewCompilation() {
     if (compilationName !== "") {
-      dispatch(createNewCompilationRequest(compilationName));
+      dispatch(createNewCompilationRequest({ compilationName, channels: [] }));
     }
   }
 
@@ -55,6 +62,8 @@ const OptionalMenuContainer = props => {
       channelsListOpened={channelsListOpened}
       loadTopicChannels={loadTopicChannels}
       redirectToSpecificSection={redirectToSpecificSection}
+      isCompilationCreating={isCompilationCreating}
+      isCompilationCreated={isCompilationCreated}
     />
   );
 };

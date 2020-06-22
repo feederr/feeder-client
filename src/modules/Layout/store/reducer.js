@@ -43,13 +43,18 @@ const layoutReducer = handleActions(
       };
     },
     [getChannelsForCompilationSuccess](state, action) {
+      const channelsId = [];
       const channelsForCompilation = action.response.data.content;
+      channelsForCompilation.forEach(channel => {
+        channelsId.push(channel.id);
+      });
       const compilationId = action.payload.compilationId;
       const compilationList = state.compilationsList;
       compilationList.forEach(compilation => {
         compilation.isOpened = false;
         if (compilation.id === compilationId) {
           compilation.channelsInfo = channelsForCompilation;
+          compilation.channelsId = channelsId;
         }
       });
       return {

@@ -119,9 +119,18 @@ const OptionalMenuLayout = ({
                         />
                       )}
 
-                      <Grid style={{ paddingLeft: "0.5em" }}>
+                      <Typography
+                        style={{
+                          paddingLeft: "0.5em",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          fontSize: "15px",
+                          maxWidth: "12em"
+                        }}
+                      >
                         {channel.title}
-                      </Grid>
+                      </Typography>
                     </Grid>
                   ))}
               </Grid>

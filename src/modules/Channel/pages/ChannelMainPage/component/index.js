@@ -12,7 +12,8 @@ const ChannelMainPage = ({
   news,
   openDescriptionModal,
   isModalOpened,
-  viewableItem
+  viewableItem,
+  closeModal
 }) => {
   return (
     <Grid className={classes.mainLayout}>
@@ -38,14 +39,16 @@ const ChannelMainPage = ({
                   }}
                   onClick={() => openDescriptionModal(item)}
                 >
-                  <img
-                    src={item.image}
-                    style={{
-                      width: "12em",
-                      height: "8em",
-                      paddingRight: "2em"
-                    }}
-                  />
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      style={{
+                        width: "12em",
+                        height: "8em",
+                        paddingRight: "2em"
+                      }}
+                    />
+                  )}
                   <Grid>
                     <Typography>{item.title}</Typography>
                   </Grid>
@@ -54,16 +57,43 @@ const ChannelMainPage = ({
             })
           : null}
       </Grid>
-      <Modal open={isModalOpened}>
+      <Modal
+        open={isModalOpened}
+        onClose={closeModal}
+        style={{
+          display: "flex",
+          alignContent: "center",
+          border: "1px solid wheat",
+          borderRadius: "0.5em"
+        }}
+      >
         <Grid
           container
-          justify="center"
           alignItems="center"
-          style={{ height: "60vh", width: "40wh", background: "black" }}
+          direction="column"
+          style={{
+            background: "black",
+
+            height: "70%",
+            width: "40%",
+            margin: "auto",
+            top: "50%",
+            overflowY: "auto"
+          }}
         >
-          <img src={viewableItem.image} />
-          <Typography>{viewableItem.title}</Typography>
-          <Typography>{viewableItem.description}</Typography>
+          <Typography style={{ fontSize: "2em", padding: "1em" }}>
+            {viewableItem.title}
+          </Typography>
+          {viewableItem.image && (
+            <img
+              src={viewableItem.image}
+              style={{ height: "15em", width: "30em", margin: "auto" }}
+            />
+          )}
+          <Typography
+            style={{ fontSize: "1em", padding: "0.7em" }}
+            dangerouslySetInnerHTML={{ __html: viewableItem.description }}
+          />
         </Grid>
       </Modal>
     </Grid>
@@ -76,7 +106,8 @@ ChannelMainPage.propTypes = {
   news: PropTypes.arrayOf(PropTypes.object),
   openDescriptionModal: PropTypes.func,
   isModalOpened: PropTypes.bool,
-  viewableItem: PropTypes.object
+  viewableItem: PropTypes.object,
+  closeModal: PropTypes.func
 };
 
 export default withStyles(styles)(ChannelMainPage);

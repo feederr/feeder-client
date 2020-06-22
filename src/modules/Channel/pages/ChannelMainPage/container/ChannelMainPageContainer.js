@@ -6,7 +6,6 @@ import {
   getNewsForChannelsRequest,
   getStatisticsForChannelRequest
 } from "../../../store/actions";
-import { parseImage } from "../../../../../helper/imageParser";
 
 const ChannelMainPage = ({ history }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
@@ -25,6 +24,10 @@ const ChannelMainPage = ({ history }) => {
     setIsModalOpened(true);
   }
 
+  function closeModal() {
+    setIsModalOpened(false);
+  }
+
   useEffect(() => {
     dispatch(getNewsForChannelsRequest({ channelId: channelInfo.id }));
     if (channelInfo) {
@@ -35,6 +38,7 @@ const ChannelMainPage = ({ history }) => {
   return (
     <ChannelPage
       news={channelNews}
+      closeModal={closeModal}
       channelInfo={channelInfo}
       openDescriptionModal={openDescriptionModal}
       isModalOpened={isModalOpened}

@@ -16,11 +16,14 @@ const ChannelPreviewContainer = ({ history, channelInfo }) => {
   console.log(channelInfo);
 
   function followUpChannel(compilation) {
+    console.log(compilation);
     const updatedList = compilationsList.filter(
       item => item.name === compilation.name
     );
     const updateCompilationsListConfig = {
-      compilationName: compilation.name
+      compilationId: compilation.id,
+      compilationName: compilation.name,
+      channels: compilation.channels.push(channelInfo.id)
     };
     dispatch(updateCompilationRequest(updateCompilationsListConfig));
     setIsFollowed(true);

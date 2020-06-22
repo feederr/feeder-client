@@ -90,7 +90,8 @@ const ChannelMainPage = ({
           display: "flex",
           alignContent: "center",
           border: "1px solid wheat",
-          borderRadius: "0.5em"
+          borderRadius: "0.5em",
+          flexDirection: "column"
         }}
       >
         <Grid
@@ -99,7 +100,6 @@ const ChannelMainPage = ({
           direction="column"
           style={{
             background: "black",
-
             height: "70%",
             width: "40%",
             margin: "auto",
@@ -113,11 +113,15 @@ const ChannelMainPage = ({
           {viewableItem.image && (
             <img
               src={viewableItem.image}
-              style={{ height: "15em", width: "30em", margin: "auto" }}
+              style={{ height: "20em", width: "30em", margin: "auto" }}
             />
           )}
           <Typography
-            style={{ fontSize: "1em", padding: "0.7em" }}
+            style={{
+              display: "block",
+              fontSize: "1em",
+              padding: "1em"
+            }}
             dangerouslySetInnerHTML={{ __html: viewableItem.description }}
           />
         </Grid>

@@ -31,7 +31,6 @@ const OptionalMenuContainer = props => {
   function openCompilation(compilation) {
     allCompilations.forEach(item => {
       if (compilation.id === item.id) {
-        console.log("change it");
         item.isOpened = !item.isOpened;
       }
     });
@@ -61,6 +60,7 @@ const OptionalMenuContainer = props => {
   }, [dispatch]);
 
   console.log(allCompilations);
+
   return (
     <OptionalMenuLayout
       openCompilation={openCompilation}

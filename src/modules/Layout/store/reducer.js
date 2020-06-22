@@ -58,10 +58,9 @@ const layoutReducer = handleActions(
       };
     },
     [openCompilationAction](state, action) {
-      console.log(action.payload);
       return {
         ...state,
-        compilationsList: action.payload
+        compilationsList: [...action.payload]
       };
     }
   },

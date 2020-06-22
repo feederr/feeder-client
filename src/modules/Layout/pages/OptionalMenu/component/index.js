@@ -99,21 +99,29 @@ const OptionalMenuLayout = ({
                   {compilation.name}
                 </Typography>
               </Grid>
-              {compilation.channels &&
-                compilation.channels.map(channel => (
-                  <Grid key={channel.id}>
-                    <Grid style={{ paddingLeft: "1em" }}>
-                      {channel.title}
-                    </Grid>
-                  </Grid>
-                ))}
               <Grid
                 className={`${
-                  channelsListOpened
+                  compilation.isOpened
                     ? classes.openedSpecificChannels
                     : classes.closedSpecificChannels
                 }`}
-              />
+              >
+                {compilation.channels &&
+                  compilation.channels.map(channel => (
+                    <Grid container key={channel.id} direction="row">
+                      <img
+                        src={channel.image.url}
+                        style={{
+                          width: "1em",
+                          height: "1em"
+                        }}
+                      />
+                      <Grid style={{ paddingLeft: "0.5em" }}>
+                        {channel.title}
+                      </Grid>
+                    </Grid>
+                  ))}
+              </Grid>
             </Grid>
           ))}
       </Grid>

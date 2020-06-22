@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import styles from "./styles";
 import { Modal, withStyles } from "@material-ui/core";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ChannelMainPage = ({
   classes,
@@ -13,12 +12,18 @@ const ChannelMainPage = ({
   openDescriptionModal,
   isModalOpened,
   viewableItem,
-  closeModal
+  closeModal,
+  numberOfArticlesPerWeek,
+  numberOfFollowers
 }) => {
   return (
     <Grid className={classes.mainLayout}>
       <Typography className={classes.channelTitle}>
         {channelInfo.title}
+      </Typography>
+      <Typography>
+        {numberOfFollowers} followers / {numberOfArticlesPerWeek} articles per
+        week
       </Typography>
       <hr style={{ color: "#a3a09c" }} />
       <Typography style={{ paddingBottom: "3em" }}>
@@ -49,8 +54,29 @@ const ChannelMainPage = ({
                       }}
                     />
                   )}
-                  <Grid>
-                    <Typography>{item.title}</Typography>
+                  <Grid
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignContent: "space-between"
+                    }}
+                  >
+                    <Typography style={{ alignSelf: "flex-start" }}>
+                      {item.title}
+                    </Typography>
+                    <Grid
+                      style={{
+                        justifySelf: "flex-end",
+                        paddingTop: "5em"
+                      }}
+                    >
+                      <Typography style={{ fontSize: "10px", color: "bisque" }}>
+                        Viewed {item.viewed} times
+                      </Typography>
+                      <Typography style={{ fontSize: "10px", color: "bisque" }}>
+                        Bookmarked {item.bookmarked} times
+                      </Typography>
+                    </Grid>
                   </Grid>
                 </Grid>
               );

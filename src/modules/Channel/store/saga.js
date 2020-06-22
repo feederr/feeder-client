@@ -15,9 +15,6 @@ function loadStatisticsForChannel(action) {
   const count = action.response.data.content.length;
   const data = action.response.data.content;
   console.log(data);
-  // for (let i = 0; i < count; i++) {
-  //
-  // }
 }
 
 export default function* channelSaga() {

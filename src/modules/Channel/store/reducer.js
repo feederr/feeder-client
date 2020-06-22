@@ -38,6 +38,8 @@ const channelPageReducer = handleActions(
           let parsedData = parseImage(item.description);
           item.description = parsedData.restOfDescription;
           item.image = parsedData.urlToImage;
+          item.viewed = Math.floor(Math.random() * 400 + 1);
+          item.bookmarked = Math.floor(Math.random() * 50 + 1);
         } catch (e) {
           console.log(e);
         }
@@ -47,7 +49,13 @@ const channelPageReducer = handleActions(
         currentChannelNews: news
       };
     },
+    [getStatisticsForItemSuccess](state, action) {
+      console.log("got statistic for news");
+      console.log(action.response.data);
+    },
     [getStatisticsForChannelSuccess](state, action) {
+      console.log("got statistics for channel");
+      console.log(action.response.data);
       return {
         ...state,
         currentChannelStatistics: action.response.data.content

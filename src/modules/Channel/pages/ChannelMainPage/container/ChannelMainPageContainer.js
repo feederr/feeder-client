@@ -19,6 +19,9 @@ const ChannelMainPage = ({ history }) => {
   const channelStatistics = useSelector(
     state => state.channel.currentChannelStatistics
   );
+  const numberOfFollowers = Math.floor(Math.random() * 100 + 1);
+  const numberOfArticlesPerWeek = Math.floor(Math.random() * 40 + 1);
+
   function openDescriptionModal(item) {
     setViewableItem(item);
     setIsModalOpened(true);
@@ -38,11 +41,15 @@ const ChannelMainPage = ({ history }) => {
   return (
     <ChannelPage
       news={channelNews}
+      channelNewsStatistics={channelNewsStatistics}
+      channelStatistics={channelStatistics}
       closeModal={closeModal}
       channelInfo={channelInfo}
       openDescriptionModal={openDescriptionModal}
       isModalOpened={isModalOpened}
       viewableItem={viewableItem}
+      numberOfFollowers={numberOfFollowers}
+      numberOfArticlesPerWeek={numberOfArticlesPerWeek}
     />
   );
 };

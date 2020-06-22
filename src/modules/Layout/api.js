@@ -20,10 +20,8 @@ export const getCompilations = () => ({
   }
 });
 
-// this actually doesn't work, it's just return info about compilation, but required to return info about all nested channels
-
 export const getChannelsForCompilation = ({ compilationId }) => ({
-  url: `/compilation/${compilationId}`,
+  url: `/channel?q=compilations.id=in=${compilationId}`,
   method: "get",
   headers: {
     Authorization: true

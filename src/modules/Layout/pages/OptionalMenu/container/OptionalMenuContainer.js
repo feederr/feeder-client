@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RedirectToAnotherComponent } from "../../Sidebar/container/SidebarContainer";
 import {
   createNewCompilationRequest,
-  getCompilationsRequest
+  getCompilationsRequest,
+  openCompilationAction
 } from "../../../store/actions";
 
 const OptionalMenuContainer = props => {
@@ -22,10 +23,19 @@ const OptionalMenuContainer = props => {
   const isCompilationCreated = useSelector(
     state => state.layout.isCompilationCreated
   );
-  console.log(allCompilations);
 
   function loadTopicChannels() {
     setChannelsListOpened(!channelsListOpened);
+  }
+
+  function openCompilation(compilation) {
+    allCompilations.forEach(item => {
+      if (compilation.id === item.id) {
+        console.log("change it");
+        item.isOpened = !item.isOpened;
+      }
+    });
+    dispatch(openCompilationAction(allCompilations));
   }
 
   function redirectToSpecificSection(redirectPath) {
@@ -50,8 +60,10 @@ const OptionalMenuContainer = props => {
     dispatch(getCompilationsRequest());
   }, [dispatch]);
 
+  console.log(allCompilations);
   return (
     <OptionalMenuLayout
+      openCompilation={openCompilation}
       allCompilations={allCompilations}
       saveNewCompilation={saveNewCompilation}
       compilationName={compilationName}

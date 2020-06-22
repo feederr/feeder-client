@@ -3,7 +3,8 @@ import {
   createNewCompilationRequest,
   createNewCompilationSuccess,
   getChannelsForCompilationSuccess,
-  getCompilationsSuccess
+  getCompilationsSuccess,
+  openCompilationAction
 } from "./actions";
 
 const defaultState = {
@@ -41,7 +42,28 @@ const layoutReducer = handleActions(
         compilationsList: currentList
       };
     },
-    [getChannelsForCompilationSuccess](state, action) {}
+    [getChannelsForCompilationSuccess](state, action) {
+      const channelsForCompilation = action.response.data.content;
+      const compilationId = action.payload.compilationId;
+      const compilationList = state.compilationsList;
+      compilationList.forEach(compilation => {
+        compilation.isOpened = false;
+        if (compilation.id === compilationId) {
+          compilation.channels = channelsForCompilation;
+        }
+      });
+      return {
+        ...state,
+        compilationList: compilationList
+      };
+    },
+    [openCompilationAction](state, action) {
+      console.log(action.payload);
+      return {
+        ...state,
+        compilationsList: action.payload
+      };
+    }
   },
   defaultState
 );

@@ -43,3 +43,4 @@ export const deleteCompilationSuccess = createAction(
 export const deleteCompilationFailed = createAction(
   "DELETE_COMPILATION_FAILED"
 );
+export const openCompilationAction = createAction("OPEN_COMPILATION_ACTION");

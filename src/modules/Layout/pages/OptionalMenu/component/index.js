@@ -30,7 +30,9 @@ const OptionalMenuLayout = ({
   saveNewCompilation,
   allCompilations,
   isCompilationCreating,
-  isCompilationCreated
+  isCompilationCreated,
+  channelsForCompilation,
+  openCompilation
 }) => {
   return (
     <div className={classes.mainLayout}>
@@ -82,48 +84,38 @@ const OptionalMenuLayout = ({
         <MenuIcon className={`${classes.bookmarkIcon} `} />
         <Typography className={classes.menuItemTitle}>All</Typography>
       </Grid>
-      <Grid
-        container
-        direction="column"
-        onClick={() => redirectToSpecificSection("Follow")}
-        className={`${classes.menuItem}  ${
-          currentPathName === "/random" ? classes.menuItemSelected : null
-        }`}
-        style={{ paddingLeft: "1em" }}
-      >
-        <Grid item container direction="row" alignItems="center">
-          <KeyboardArrowRightIcon
-            className={`${classes.arrowIcon} ${
-              channelsListOpened ? classes.moveArrow : null
-            }`}
-            onClick={loadTopicChannels}
-          />
-          <Typography className={classes.menuItemTitle}>
-            Subscription
-          </Typography>
-        </Grid>
-        <Grid
-          className={`${
-            channelsListOpened
-              ? classes.openedSpecificChannels
-              : classes.closedSpecificChannels
-          }`}
-        >
-          {allCompilations
-            ? allCompilations.map(compilation => (
-                <Grid key={compilation.id} className={classes.compilationItem}>
-                  <Grid>{compilation.name}</Grid>
-                  <Grid>
-                    {compilation.list
-                      ? compilation.list.map((item, itemId) => (
-                          <Grid key={itemId}>sadfasf</Grid>
-                        ))
-                      : null}
+      <Grid container direction="column" style={{ paddingLeft: "1em" }}>
+        {allCompilations &&
+          allCompilations.map(compilation => (
+            <Grid key={compilation.id}>
+              <Grid item container direction="row" alignItems="center">
+                <KeyboardArrowRightIcon
+                  className={`${classes.arrowIcon} ${
+                    compilation.isOpened ? classes.moveArrow : null
+                  }`}
+                  onClick={() => openCompilation(compilation)}
+                />
+                <Typography className={classes.menuItemTitle}>
+                  {compilation.name}
+                </Typography>
+              </Grid>
+              {compilation.channels &&
+                compilation.channels.map(channel => (
+                  <Grid key={channel.id}>
+                    <Grid style={{ paddingLeft: "1em" }}>
+                      {channel.title}
+                    </Grid>
                   </Grid>
-                </Grid>
-              ))
-            : null}
-        </Grid>
+                ))}
+              <Grid
+                className={`${
+                  channelsListOpened
+                    ? classes.openedSpecificChannels
+                    : classes.closedSpecificChannels
+                }`}
+              />
+            </Grid>
+          ))}
       </Grid>
       <Button style={{ margin: "auto", width: "100%" }} onClick={onToggleModal}>
         Create New Feed
@@ -131,7 +123,6 @@ const OptionalMenuLayout = ({
       <Dialog
         open={isModalOpen && !isCompilationCreated}
         onClose={onToggleModal}
-
       >
         <DialogTitle>Create New Compilation</DialogTitle>
         <DialogContent className={classes.modalLayout}>
@@ -185,7 +176,9 @@ OptionalMenuLayout.propTypes = {
   saveNewCompilation: PropTypes.func,
   allCompilations: PropTypes.array,
   isCompilationCreating: PropTypes.bool,
-  isCompilationCreated: PropTypes.bool
+  isCompilationCreated: PropTypes.bool,
+  channelsForCompilation: PropTypes.array,
+  openCompilation: PropTypes.func
 };
 
 export default withStyles(styles)(OptionalMenuLayout);

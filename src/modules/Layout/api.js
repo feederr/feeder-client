@@ -34,7 +34,7 @@ export const updateCompilation = ({
   channels
 }) => ({
   url: `/compilation/${compilationId}`,
-  method: "get",
+  method: "put",
   data: {
     name: compilationName,
     channels: channels

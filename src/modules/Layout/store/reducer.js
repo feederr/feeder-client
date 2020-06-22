@@ -49,7 +49,7 @@ const layoutReducer = handleActions(
       compilationList.forEach(compilation => {
         compilation.isOpened = false;
         if (compilation.id === compilationId) {
-          compilation.channels = channelsForCompilation;
+          compilation.channelsInfo = channelsForCompilation;
         }
       });
       return {

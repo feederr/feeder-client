@@ -17,16 +17,17 @@ const ChannelPreviewContainer = ({ history, channelInfo }) => {
 
   function followUpChannel(compilation) {
     console.log(compilation);
-    const updatedList = compilationsList.filter(
-      item => item.name === compilation.name
-    );
-    const updateCompilationsListConfig = {
-      compilationId: compilation.id,
-      compilationName: compilation.name,
-      channels: compilation.channels.push(channelInfo.id)
-    };
-    dispatch(updateCompilationRequest(updateCompilationsListConfig));
-    setIsFollowed(true);
+    // if (!compilation.channels) {
+    //   compilation.channels = [];
+    // }
+    // compilation.channels.push(channelInfo.id);
+    // const updateCompilationsListConfig = {
+    //   compilationId: compilation.id,
+    //   compilationName: compilation.name,
+    //   channels: compilation.channels
+    // };
+    // dispatch(updateCompilationRequest(updateCompilationsListConfig));
+    // setIsFollowed(true);
   }
 
   function redirectToNews(channelName) {

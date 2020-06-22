@@ -106,16 +106,19 @@ const OptionalMenuLayout = ({
                     : classes.closedSpecificChannels
                 }`}
               >
-                {compilation.channels &&
-                  compilation.channels.map(channel => (
+                {compilation.channelsInfo &&
+                  compilation.channelsInfo.map(channel => (
                     <Grid container key={channel.id} direction="row">
-                      <img
-                        src={channel.image.url}
-                        style={{
-                          width: "1em",
-                          height: "1em"
-                        }}
-                      />
+                      {channel.image && (
+                        <img
+                          src={channel.image.url}
+                          style={{
+                            width: "1em",
+                            height: "1em"
+                          }}
+                        />
+                      )}
+
                       <Grid style={{ paddingLeft: "0.5em" }}>
                         {channel.title}
                       </Grid>
